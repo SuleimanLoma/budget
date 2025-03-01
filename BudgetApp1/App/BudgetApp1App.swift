@@ -12,8 +12,7 @@ struct BudgetApp1App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-            //11
-            //22
+           
         }
     }
 }
