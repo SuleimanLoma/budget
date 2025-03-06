@@ -8,14 +8,9 @@
 import Foundation
 
 class AddValueViewModel: ObservableObject {
-    @Published var name: String = "dadadadada"
+    @Published var name: String = ""
     @Published var amount: String = ""
-    @Published var isIncome: Bool = false
+    @Published var sourceType: SourceType = .income
     
-    func save() {
-        
-    }
-    
-    
+    func save() {}
 }
-    
