@@ -9,11 +9,12 @@ import SwiftUI
 
 @main
 struct BudgetApp1App: App {
-    
+    let persistenceController = PersistenceController.shared
+
     var body: some Scene {
         WindowGroup {
             MainView()
-           
+                .environment(\.managedObjectContext, persistenceController.container.viewContext) //sposob dobbavit' svoistva vo  vse viewshki
         }
     }
 }
