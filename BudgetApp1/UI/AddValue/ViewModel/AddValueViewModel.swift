@@ -8,11 +8,15 @@
 import Foundation
 
 class AddValueViewModel: ObservableObject {
+    private let coreDataProvider: CoreDataProvider = CoreDataProvider.shared
+
     @Published var name: String = ""
     @Published var amount: String = ""
     @Published var sourceType: SourceType = .income
     
-    func save() {}
+    func save() {
+        coreDataProvider.addTransaction(name: name, amount: amount, sourceType: sourceType.rawValue )
+    }
 }
 
 

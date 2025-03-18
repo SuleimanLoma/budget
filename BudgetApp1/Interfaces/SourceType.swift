@@ -8,17 +8,9 @@
 import Foundation
 //ForEach Hashable
 //CaseIterable создает массивы из энама
-enum SourceType: Hashable, CaseIterable {
+enum SourceType: String, Hashable, CaseIterable {
     case income
     case expense
     
-    var title: String {
-        switch self {
-        case .income:
-            "Income"
-        case .expense:
-            "Expense"
-        }
-    }
 }
 

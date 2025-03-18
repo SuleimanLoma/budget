@@ -14,7 +14,6 @@ extension AddValueView {
         var body: some View {
             Group {
                     
-              
                 TextField("Discription", text: $viewModel.name)
                     
                 TextField("Amount", text: $viewModel.amount)
@@ -24,7 +23,7 @@ extension AddValueView {
             .font(.system(size: 20))
             .padding()
             .background(Color.gray.opacity(0.2))
-            .cornerRadius(4)
+            .cornerRadius(12)
             .padding(.horizontal)
         }
     }

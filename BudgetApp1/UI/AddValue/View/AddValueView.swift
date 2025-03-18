@@ -9,20 +9,23 @@ import SwiftUI
 
 struct AddValueView: View {
     @StateObject private var viewModel = AddValueViewModel()
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
             InputsView(viewModel: viewModel)
-            Picker("Transaction type: \(viewModel.sourceType)", selection: $viewModel.sourceType) {
+            Picker("Transaction type: \(viewModel.sourceType)", selection: $viewModel.sourceType)
+            {
                 ForEach(SourceType.allCases, id: \.self) { type in
-                    Text(type.title)
+                    Text(type.rawValue)
                         .tag(type)
-                    
+                   
                 }
             }
             Spacer()
             
             Button {
                 viewModel.save()
+                dismiss()
             } label: {
                 Text("Save")
                     .foregroundColor(.white)
@@ -30,12 +33,13 @@ struct AddValueView: View {
                     .font(.system(size: 24))
                     .frame(maxWidth: .infinity)
                     .padding(.vertical)
-                    .background(Color.red)
+                    .background(Color.another)
                     .cornerRadius(16)
             }
             .padding()
         }
-        .background(.linearGradient(Gradient(colors: [.red, .orange, .yellow]), startPoint: .topTrailing, endPoint: .bottom))
+        .background(Color(UIColor.secondarySystemBackground))
+        
     }
 }
 

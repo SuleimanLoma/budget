@@ -10,6 +10,7 @@ import Foundation
 
 class CoreDataProvider {
     let container = PersistenceController.shared.container
+    static let shared = CoreDataProvider()
     
     func addTransaction(name: String, amount: String, sourceType: String) {
         let context = container.viewContext
@@ -24,7 +25,17 @@ class CoreDataProvider {
             print(error)
         }
     }
-    func fetchTransactions() {
+    
+    func fetchTransactions() -> [TransactionModel] {
+        let context = container.viewContext
+        let fetchRequest = TransactionModel.fetchRequest()
         
+        do {
+            let transactions = try context.fetch(fetchRequest)
+            return transactions
+        } catch {
+            print(error)
+            return []
+        }
     }
 }
