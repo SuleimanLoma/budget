@@ -15,12 +15,16 @@ struct MainView: View {
             ScrollView {
                 VStack {
                     ForEach(viewModel.transactions, id:\.self) { model in
-                        CellView(
-                            sourceType: model.sourceType ?? "",
-                            name: model.name ?? "",
-                            amount: model.amount ?? ""
-                        )
+                        NavigationLink(destination: EditView(item: model), label: {
+                            CellView(
+                                sourceType: model.sourceType ?? "",
+                                name: model.name ?? "",
+                                amount: model.amount ?? ""
+                            )
+                        })
+                        
                     }
+                    .id(viewModel.listId)
                 }
             }
             .navigationTitle("Main")

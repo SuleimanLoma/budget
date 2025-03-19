@@ -38,4 +38,31 @@ class CoreDataProvider {
             return []
         }
     }
+    func edit(
+        id: NSManagedObjectID,
+        name: String,
+        amount: String,
+        sourceType: String
+    ) {
+        let context = container.viewContext
+        do {
+            let model =  try context.existingObject(with: id) as? TransactionModel
+            model?.name = name
+            model?.amount = amount
+            model?.sourceType = sourceType
+            
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
+    func delete(model: TransactionModel) {
+        let context = container.viewContext
+        context.delete(model)
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
+    }
 }
